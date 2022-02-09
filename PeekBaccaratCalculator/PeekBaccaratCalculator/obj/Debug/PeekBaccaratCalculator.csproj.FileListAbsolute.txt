@@ -1,0 +1,9 @@
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\bin\Debug\PeekBaccaratCalculator.exe.config
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\bin\Debug\PeekBaccaratCalculator.exe
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\bin\Debug\PeekBaccaratCalculator.pdb
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.MainForm.resources
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.Properties.Resources.resources
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.csproj.GenerateResource.cache
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.csproj.CoreCompileInputs.cache
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.exe
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.pdb
