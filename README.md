@@ -8,4 +8,7 @@ For each round:
 - Once you have completed the fields, then click the 'Calculate' button.
 - Once the 20,000 simulations have run (should be very quick), a message will appear telling you the optimal strategy and the EV for each action. It will never be optimal to double your bet so this action is never displayed.
 
+Reminder:
+- For a near 50-50 scenario, the incorrect strategy may be displayed. However, since the EVs are displayed you will able to see how close it really is. But for these rounds the way you play doesn't make a difference as it is basically a 50-50.
+
 You can toggle the 'TopMost' checkbox if you want the program to overlap all the other programs. This can be useful when playing, so the program doesn't disappear when you are actually playing your hand and you won't have to reopen it from the taskbar.
