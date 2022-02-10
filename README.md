@@ -3,7 +3,7 @@ An optimal strategy calculator for Evolution's Peek Baccarat based on simulation
 
 For each round:
 - Enter the amount of simulations that should be run. The higher the more accurate the calculator will be. The recommended amount is 100,000.
-- Enter if are betting on the Player (P) or Banker (B).
+- Enter if are betting on the Player or Banker.
 - Enter the values of any revealed Player cards (1st card & 2nd card).
 - Enter the values of any revealed Banker cards (3rd card & 4th card).
 - Once you have completed the fields, then click the 'Calculate' button.
