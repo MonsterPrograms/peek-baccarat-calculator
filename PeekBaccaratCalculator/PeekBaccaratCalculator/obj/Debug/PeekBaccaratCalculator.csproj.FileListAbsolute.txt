@@ -7,3 +7,4 @@ C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\De
 C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.csproj.CoreCompileInputs.cache
 C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.exe
 C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.pdb
+C:\Users\monst\source\repos\PeekBaccaratCalculator\PeekBaccaratCalculator\obj\Debug\PeekBaccaratCalculator.csproj.AssemblyReference.cache
