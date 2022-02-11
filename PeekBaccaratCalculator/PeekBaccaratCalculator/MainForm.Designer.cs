@@ -122,7 +122,7 @@ namespace PeekBaccaratCalculator
             this.button1.TabIndex = 6;
             this.button1.Text = "Calculate";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Calculate);
+            this.button1.Click += new System.EventHandler(this.btnCalculate_Click);
             // 
             // label1
             // 
@@ -158,6 +158,7 @@ namespace PeekBaccaratCalculator
             // comboPlayerOrBanker
             // 
             this.comboPlayerOrBanker.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboPlayerOrBanker.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboPlayerOrBanker.FormattingEnabled = true;
             this.comboPlayerOrBanker.Items.AddRange(new object[] {
             "Player",
@@ -166,11 +167,11 @@ namespace PeekBaccaratCalculator
             this.comboPlayerOrBanker.Name = "comboPlayerOrBanker";
             this.comboPlayerOrBanker.Size = new System.Drawing.Size(73, 21);
             this.comboPlayerOrBanker.TabIndex = 1;
-            this.comboPlayerOrBanker.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInput);
             // 
             // comboPlayerCard1
             // 
             this.comboPlayerCard1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboPlayerCard1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboPlayerCard1.FormattingEnabled = true;
             this.comboPlayerCard1.Items.AddRange(new object[] {
             "0",
@@ -187,11 +188,11 @@ namespace PeekBaccaratCalculator
             this.comboPlayerCard1.Name = "comboPlayerCard1";
             this.comboPlayerCard1.Size = new System.Drawing.Size(73, 21);
             this.comboPlayerCard1.TabIndex = 2;
-            this.comboPlayerCard1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInput);
             // 
             // comboPlayerCard2
             // 
             this.comboPlayerCard2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboPlayerCard2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboPlayerCard2.FormattingEnabled = true;
             this.comboPlayerCard2.Items.AddRange(new object[] {
             "0",
@@ -208,11 +209,11 @@ namespace PeekBaccaratCalculator
             this.comboPlayerCard2.Name = "comboPlayerCard2";
             this.comboPlayerCard2.Size = new System.Drawing.Size(73, 21);
             this.comboPlayerCard2.TabIndex = 3;
-            this.comboPlayerCard2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInput);
             // 
             // comboBankerCard1
             // 
             this.comboBankerCard1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBankerCard1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBankerCard1.FormattingEnabled = true;
             this.comboBankerCard1.Items.AddRange(new object[] {
             "0",
@@ -229,11 +230,11 @@ namespace PeekBaccaratCalculator
             this.comboBankerCard1.Name = "comboBankerCard1";
             this.comboBankerCard1.Size = new System.Drawing.Size(73, 21);
             this.comboBankerCard1.TabIndex = 4;
-            this.comboBankerCard1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInput);
             // 
             // comboBankerCard2
             // 
             this.comboBankerCard2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBankerCard2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBankerCard2.FormattingEnabled = true;
             this.comboBankerCard2.Items.AddRange(new object[] {
             "0",
@@ -250,7 +251,6 @@ namespace PeekBaccaratCalculator
             this.comboBankerCard2.Name = "comboBankerCard2";
             this.comboBankerCard2.Size = new System.Drawing.Size(73, 21);
             this.comboBankerCard2.TabIndex = 5;
-            this.comboBankerCard2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckInput);
             // 
             // MainForm
             // 

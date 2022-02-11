@@ -6,53 +6,14 @@ namespace PeekBaccaratCalculator
 {
     public partial class MainForm : Form
     {
+        private static readonly Random Random = new Random();
+
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void CheckInput(object sender, KeyPressEventArgs e)
-        {
-            ComboBox cb = (ComboBox)sender;
-            cb.DroppedDown = true;
-            string strFindStr = "";
-            if (e.KeyChar == (char)8)
-            {
-                if (cb.SelectionStart <= 1)
-                {
-                    cb.Text = "";
-                    return;
-                }
-
-                if (cb.SelectionLength == 0)
-                    strFindStr = cb.Text.Substring(0, cb.Text.Length - 1);
-                else
-                    strFindStr = cb.Text.Substring(0, cb.SelectionStart - 1);
-            }
-            else
-            {
-                if (cb.SelectionLength == 0)
-                    strFindStr = cb.Text + e.KeyChar;
-                else
-                    strFindStr = cb.Text.Substring(0, cb.SelectionStart) + e.KeyChar;
-            }
-
-            int intIdx = -1;
-
-            intIdx = cb.FindString(strFindStr);
-            if (intIdx != -1)
-            {
-                cb.SelectedText = "";
-                cb.SelectedIndex = intIdx;
-                cb.SelectionStart = strFindStr.Length;
-                cb.SelectionLength = cb.Text.Length;
-                e.Handled = true;
-            }
-            else
-                e.Handled = true;
-        }
-
-        private void Calculate(object sender, EventArgs e)
+        private void btnCalculate_Click(object sender, EventArgs e)
         {
             var playerOrBanker = comboPlayerOrBanker.SelectedIndex;
             var beforePlayerCard1 = comboPlayerCard1.SelectedIndex;
@@ -70,7 +31,6 @@ namespace PeekBaccaratCalculator
             }
             else
             {
-                var random = new Random();
                 int playerWins = 0, bankerWins = 0, ties = 0;
 
                 // fresh 8 deck shoe
@@ -94,51 +54,30 @@ namespace PeekBaccaratCalculator
                     var bankerCard1 = beforeBankerCard1;
                     var bankerCard2 = beforeBankerCard2;
 
-                    // both player and banker will receive 2 cards each, so let's get random cards/values for the ones that have not been peeked yet
+                    // assign a value to each card that haven't been peeked
                     if (playerCard1 == -1)
                     {
-                        var index = random.Next(0, newShoe.Count);
-                        playerCard1 = newShoe[index];
-                        newShoe.RemoveAt(index);
+                        playerCard1 = RemoveAndReturnRandomCard(newShoe);
                     }
 
                     if (playerCard2 == -1)
                     {
-                        var index = random.Next(0, newShoe.Count);
-                        playerCard2 = newShoe[index];
-                        newShoe.RemoveAt(index);
+                        playerCard2 = RemoveAndReturnRandomCard(newShoe);
                     }
 
                     if (bankerCard1 == -1)
                     {
-                        var index = random.Next(0, newShoe.Count);
-                        bankerCard1 = newShoe[index];
-                        newShoe.RemoveAt(index);
+                        bankerCard1 = RemoveAndReturnRandomCard(newShoe);
                     }
 
                     if (bankerCard2 == -1)
                     {
-                        var index = random.Next(0, newShoe.Count);
-                        bankerCard2 = newShoe[index];
-                        newShoe.RemoveAt(index);
+                        bankerCard2 = RemoveAndReturnRandomCard(newShoe);
                     }
 
                     // calculate the initial two-card totals for player and banker
-                    var playerTotal = playerCard1 + playerCard2;
-                    var bankerTotal = bankerCard1 + bankerCard2;
-
-                    // make sure the totals are added correctly by removing the first digit if the player and/or banker total is over 9
-                    if (playerTotal > 9)
-                    {
-                        var stringPlayerTotal = playerTotal.ToString().Remove(0, 1);
-                        playerTotal = int.Parse(stringPlayerTotal);
-                    }
-
-                    if (bankerTotal > 9)
-                    {
-                        var stringBankerTotal = bankerTotal.ToString().Remove(0, 1);
-                        bankerTotal = int.Parse(stringBankerTotal);
-                    }
+                    var playerTotal = CalculateTotal(playerCard1, playerCard2);
+                    var bankerTotal = CalculateTotal(bankerCard1, bankerCard2);
 
                     // determine if player and/or banker needs a third card
                     if (playerTotal >= 0 && playerTotal <= 7)
@@ -148,9 +87,7 @@ namespace PeekBaccaratCalculator
                         // determine if player needs a third card
                         if (playerTotal <= 5)
                         {
-                            var index = random.Next(0, newShoe.Count);
-                            playerCard3 = newShoe[index];
-                            newShoe.RemoveAt(index);
+                            playerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
 
                         var bankerCard3 = -1;
@@ -158,61 +95,37 @@ namespace PeekBaccaratCalculator
                         // determine if banker needs a third card
                         if (bankerTotal >= 0 && bankerTotal <= 2)
                         {
-                            var index = random.Next(0, newShoe.Count);
-                            bankerCard3 = newShoe[index];
-                            newShoe.RemoveAt(index);
+                            bankerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
                         else if (bankerTotal == 3 && playerCard3 != 8)
                         {
-                            var index = random.Next(0, newShoe.Count);
-                            bankerCard3 = newShoe[index];
-                            newShoe.RemoveAt(index);
+                            bankerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
                         else if (bankerTotal == 4 && (playerCard3 == -1 || playerCard3 >= 2 && playerCard3 <= 7))
                         {
-                            var index = random.Next(0, newShoe.Count);
-                            bankerCard3 = newShoe[index];
-                            newShoe.RemoveAt(index);
+                            bankerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
                         else if (bankerTotal == 5 && (playerCard3 == -1 || playerCard3 >= 4 && playerCard3 <= 7))
                         {
-                            var index = random.Next(0, newShoe.Count);
-                            bankerCard3 = newShoe[index];
-                            newShoe.RemoveAt(index);
+                            bankerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
                         else if (bankerTotal == 6 && (playerCard3 == 6 || playerCard3 == 7))
                         {
-                            var index = random.Next(0, newShoe.Count);
-                            bankerCard3 = newShoe[index];
-                            newShoe.RemoveAt(index);
+                            bankerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
 
                         // determine if the player was dealt a third card
                         if (playerCard3 != -1)
                         {
                             // add on the third card to the total for player
-                            playerTotal += playerCard3;
-
-                            // make sure the total is added correctly by removing the first digit if the player total is over 9
-                            if (playerTotal > 9)
-                            {
-                                var stringPlayerTotal = playerTotal.ToString().Remove(0, 1);
-                                playerTotal = int.Parse(stringPlayerTotal);
-                            }
+                            playerTotal = CalculateTotal(playerTotal, playerCard3);
                         }
 
                         // determine if the banker was dealt a third card
                         if (bankerCard3 != -1)
                         {
                             // add on the third card to the total for banker
-                            bankerTotal += bankerCard3;
-
-                            // make sure the total is added correctly by removing the first digit if the banker total is over 9
-                            if (bankerTotal > 9)
-                            {
-                                var stringBankerTotal = bankerTotal.ToString().Remove(0, 1);
-                                bankerTotal = int.Parse(stringBankerTotal);
-                            }
+                            bankerTotal = CalculateTotal(bankerTotal, bankerCard3);
                         }
                     }
 
@@ -252,6 +165,21 @@ namespace PeekBaccaratCalculator
                 // display the optimal strategy based on ev
                 MessageBox.Show($"{(tripleEv >= continueEv ? "Triple" : "Continue")}\n\nTriple EV: {tripleEv}\nContinue EV: {continueEv}", "Optimal Strategy", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private static int RemoveAndReturnRandomCard(IList<int> shoe)
+        {
+            var index = Random.Next(shoe.Count);
+            var card = shoe[index];
+            shoe.RemoveAt(index);
+            return card;
+        }
+
+        private static int CalculateTotal(int card1, int card2)
+        {
+            var total = card1 + card2;
+
+            return total > 9 ? int.Parse(total.ToString().Remove(0, 1)) : total;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
