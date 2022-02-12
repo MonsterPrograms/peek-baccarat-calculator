@@ -80,7 +80,7 @@ namespace PeekBaccaratCalculator
                     var bankerTotal = CalculateTotal(bankerCard1, bankerCard2);
 
                     // determine if player and/or banker needs a third card
-                    if (playerTotal >= 0 && playerTotal <= 7)
+                    if (playerTotal >= 0 && playerTotal <= 7 && bankerTotal >= 0 && bankerTotal <= 7)
                     {
                         var playerCard3 = -1;
 
@@ -93,7 +93,7 @@ namespace PeekBaccaratCalculator
                         var bankerCard3 = -1;
 
                         // determine if banker needs a third card
-                        if (bankerTotal >= 0 && bankerTotal <= 2)
+                        if (bankerTotal <= 2)
                         {
                             bankerCard3 = RemoveAndReturnRandomCard(newShoe);
                         }
